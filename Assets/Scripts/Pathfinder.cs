@@ -17,12 +17,17 @@ public class Pathfinder : MonoBehaviour
     void Update()
     {
         FollowPath();
+        //Debug.Log(waypointIndex);
+
+
     }
 
     void FollowPath()
     {
         if (waypointIndex < waypoints.Count)
         {
+            //Debug.Log(waypointIndex);
+            //Debug.Log(waypoints.Count);
             Vector3 targetPosition = waypoints[waypointIndex].position;
             float delta = waveConfig.GetMoveSpeed() * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, delta);
@@ -30,10 +35,13 @@ public class Pathfinder : MonoBehaviour
             {
                 waypointIndex++;
             }
-            else
+        
+        }
+        else
             {
                 Destroy(gameObject);
+                //Debug.Log(waypointIndex);
+
             }
-        }
     }
 }
